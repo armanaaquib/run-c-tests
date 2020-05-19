@@ -14,6 +14,15 @@ int sub(int num1, int num2)
   return num1 - num2;
 }
 
+void test_add(Report_ptr);
+Test_ptr should_add_two_pos_nums(void);
+Test_ptr should_add_two_neg_nums(void);
+Test_ptr should_add_pos_and_neg_num(void);
+void test_sub(Report_ptr);
+Test_ptr should_sub_two_pos_nums(void);
+Test_ptr should_sub_two_neg_nums(void);
+Test_ptr should_sub_pos_and_neg_num(void);
+
 Test_ptr should_add_two_pos_nums()
 {
   Test_ptr test = create_test("should add two positive numbers");

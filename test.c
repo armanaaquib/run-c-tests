@@ -49,11 +49,11 @@ Report_ptr create_report(void)
   return report;
 }
 
-void run_tests(Char_ptr test_suite_name, Test_Func tests[], unsigned length, Report_ptr report)
+void run_tests(Char_ptr test_suite_name, Test_Func tests[], int length, Report_ptr report)
 {
   display_test_suite_name(test_suite_name);
 
-  for(unsigned i = 0; i < length; i++)
+  for(int i = 0; i < length; i++)
   {
     report->total++;
 
@@ -74,11 +74,11 @@ void run_tests(Char_ptr test_suite_name, Test_Func tests[], unsigned length, Rep
 
 }
 
-Report_ptr runt_test_suites(TestSuite_Func test_suites[], unsigned length)
+Report_ptr runt_test_suites(TestSuite_Func test_suites[], int length)
 {
   Report_ptr report = create_report();
 
-  for(unsigned i = 0; i < length; i++)
+  for(int i = 0; i < length; i++)
   {
     (*test_suites[i])(report);
   }
