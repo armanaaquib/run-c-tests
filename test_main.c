@@ -44,7 +44,7 @@ Test_ptr should_add_pos_and_neg_num()
   return test;
 }
 
-Report_ptr test_add(Report_ptr report)
+void test_add(Report_ptr report)
 {
   Test_Func tests[] = {
     should_add_two_pos_nums, 
@@ -52,7 +52,7 @@ Report_ptr test_add(Report_ptr report)
     should_add_pos_and_neg_num
   };
 
- return run_tests("add()", tests, 3, report);
+  run_tests("add()", tests, 3, report);
 }
 
 Test_ptr should_sub_two_pos_nums()
@@ -85,7 +85,7 @@ Test_ptr should_sub_pos_and_neg_num()
   return test;
 }
 
-Report_ptr test_sub(Report_ptr report)
+void test_sub(Report_ptr report)
 {
   Test_Func tests[] = {
     should_sub_two_pos_nums, 
@@ -93,7 +93,7 @@ Report_ptr test_sub(Report_ptr report)
     should_sub_pos_and_neg_num
   };
 
- return run_tests("sub()", tests, 3, report);
+ run_tests("sub()", tests, 3, report);
 }
 
 int main(void)
