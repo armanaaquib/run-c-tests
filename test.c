@@ -33,6 +33,11 @@ void error_message(Char_ptr error)
   printf("%s\n", error);
 }
 
+void display_test_suite_name(Char_ptr test_suite_name)
+{
+  printf("%s\n", test_suite_name);
+}
+
 Report_ptr create_report(void)
 {
   Report_ptr report = malloc(sizeof(Report));
@@ -44,9 +49,9 @@ Report_ptr create_report(void)
   return report;
 }
 
-Report_ptr run_tests(Test_Func tests[], unsigned length)
+Report_ptr run_tests(Char_ptr test_suite_name, Test_Func tests[], unsigned length, Report_ptr report)
 {
-  Report_ptr report = create_report();
+  display_test_suite_name(test_suite_name);
 
   for(unsigned i = 0; i < length; i++)
   {
@@ -65,6 +70,18 @@ Report_ptr run_tests(Test_Func tests[], unsigned length)
       fail_message(test->name);
       error_message(test->error);
     }
+  }
+
+  return report;
+}
+
+Report_ptr runt_test_suite(TestSuite_Func test_suites[], unsigned length)
+{
+  Report_ptr report = create_report();
+
+  for(unsigned i = 0; i < length; i++)
+  {
+    report = (*test_suites[i])(report);
   }
 
   return report;

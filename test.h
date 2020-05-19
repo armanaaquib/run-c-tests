@@ -31,10 +31,13 @@ typedef struct
 typedef Report *Report_ptr;
 
 typedef Test_ptr (*Test_Func)(void);
+typedef Report_ptr (*TestSuite_Func)(Report_ptr);
 
 Test_ptr create_test(Char_ptr);
 
-Report_ptr run_tests(Test_Func [], unsigned);
+Report_ptr run_tests(Char_ptr, Test_Func [], unsigned, Report_ptr);
+Report_ptr runt_test_suite(TestSuite_Func [], unsigned);
+
 void display_report(Report_ptr);
 
 #endif
