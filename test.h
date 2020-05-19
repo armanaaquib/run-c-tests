@@ -36,7 +36,7 @@ typedef void (*TestSuite_Func)(Report_ptr);
 Test_ptr create_test(Char_ptr);
 
 void run_tests(Char_ptr, Test_Func [], unsigned, Report_ptr);
-Report_ptr runt_test_suite(TestSuite_Func [], unsigned);
+Report_ptr runt_test_suites(TestSuite_Func [], unsigned);
 
 void display_report(Report_ptr);
 

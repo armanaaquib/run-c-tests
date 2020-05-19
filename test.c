@@ -74,7 +74,7 @@ void run_tests(Char_ptr test_suite_name, Test_Func tests[], unsigned length, Rep
 
 }
 
-Report_ptr runt_test_suite(TestSuite_Func test_suites[], unsigned length)
+Report_ptr runt_test_suites(TestSuite_Func test_suites[], unsigned length)
 {
   Report_ptr report = create_report();
 

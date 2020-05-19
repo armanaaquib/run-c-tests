@@ -100,7 +100,7 @@ int main(void)
 {
   TestSuite_Func test_suites[] = {test_add, test_sub};
 
-  Report_ptr report = runt_test_suite(test_suites, 2);
+  Report_ptr report = runt_test_suites(test_suites, 2);
   display_report(report);
 
   return 0;
