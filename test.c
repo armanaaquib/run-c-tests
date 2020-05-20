@@ -20,33 +20,22 @@ Test_ptr create_test(Char_ptr name)
 
 void pass_message(Char_ptr test_name)
 {
-  printf("%s %s\n", PASS, test_name);
+  printf("  %s %s\n", PASS, test_name);
 }
 
 void fail_message(Char_ptr test_name)
 {
-  printf("%s %s\n", FAIL, test_name);
+  printf("  %s %s\n", FAIL, test_name);
 }
 
 void error_message(Char_ptr error)
 {
-  printf("%s\n", error);
+  printf("\t%s\n", error);
 }
 
 void display_test_suite_name(Char_ptr test_suite_name)
 {
-  printf("%s\n", test_suite_name);
-}
-
-Report_ptr create_report(void)
-{
-  Report_ptr report = malloc(sizeof(Report));
-
-  report->total = 0;
-  report->passed = 0;
-  report->failed = 0;
-
-  return report;
+  printf("\v%s\n", test_suite_name);
 }
 
 void run_tests(Char_ptr test_suite_name, Test_Func tests[], int length, Report_ptr report)
@@ -74,6 +63,17 @@ void run_tests(Char_ptr test_suite_name, Test_Func tests[], int length, Report_p
 
 }
 
+Report_ptr create_report(void)
+{
+  Report_ptr report = malloc(sizeof(Report));
+
+  report->total = 0;
+  report->passed = 0;
+  report->failed = 0;
+
+  return report;
+}
+
 Report_ptr runt_test_suites(TestSuite_Func test_suites[], int length)
 {
   Report_ptr report = create_report();
@@ -88,6 +88,5 @@ Report_ptr runt_test_suites(TestSuite_Func test_suites[], int length)
 
 void display_report(Report_ptr report)
 {
-  printf("\nTotal: %d\n", report->total);
-  printf("Passed: %d, Failed: %d\n", report->passed, report->failed);
+  printf("\v%d Passing, %d Failing\n", report->passed, report->failed);
 }
