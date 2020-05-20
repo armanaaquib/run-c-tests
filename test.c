@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "test.h"
 
-Report_ptr create_report(void);
+TestReport_ptr create_report(void);
 void pass_message(Char_ptr);
 void fail_message(Char_ptr);
 void error_message(Char_ptr);
@@ -38,14 +38,12 @@ void display_test_suite_name(Char_ptr test_suite_name)
   printf("\v%s\n", test_suite_name);
 }
 
-void run_tests(Char_ptr test_suite_name, Test_Func tests[], int length, Report_ptr report)
+void run_tests(Char_ptr test_suite_name, Test_Func tests[], int length, TestReport_ptr report)
 {
   display_test_suite_name(test_suite_name);
 
   for(int i = 0; i < length; i++)
   {
-    report->total++;
-
     Test_ptr test = (*tests[i])();
 
     if(test->status)
@@ -63,20 +61,19 @@ void run_tests(Char_ptr test_suite_name, Test_Func tests[], int length, Report_p
 
 }
 
-Report_ptr create_report(void)
+TestReport_ptr create_report(void)
 {
-  Report_ptr report = malloc(sizeof(Report));
+  TestReport_ptr report = malloc(sizeof(Test_Report));
 
-  report->total = 0;
   report->passed = 0;
   report->failed = 0;
 
   return report;
 }
 
-Report_ptr runt_test_suites(TestSuite_Func test_suites[], int length)
+TestReport_ptr runt_test_suites(TestSuite_Func test_suites[], int length)
 {
-  Report_ptr report = create_report();
+  TestReport_ptr report = create_report();
 
   for(int i = 0; i < length; i++)
   {
@@ -86,7 +83,7 @@ Report_ptr runt_test_suites(TestSuite_Func test_suites[], int length)
   return report;
 }
 
-void display_report(Report_ptr report)
+void display_report(TestReport_ptr report)
 {
   printf("\v%d Passing, %d Failing\n", report->passed, report->failed);
 }

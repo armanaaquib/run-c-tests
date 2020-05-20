@@ -14,11 +14,11 @@ int sub(int num1, int num2)
   return num1 - num2;
 }
 
-void test_add(Report_ptr);
+void test_add(TestReport_ptr);
 Test_ptr should_add_two_pos_nums(void);
 Test_ptr should_add_two_neg_nums(void);
 Test_ptr should_add_pos_and_neg_num(void);
-void test_sub(Report_ptr);
+void test_sub(TestReport_ptr);
 Test_ptr should_sub_two_pos_nums(void);
 Test_ptr should_sub_two_neg_nums(void);
 Test_ptr should_sub_pos_and_neg_num(void);
@@ -53,7 +53,7 @@ Test_ptr should_add_pos_and_neg_num()
   return test;
 }
 
-void test_add(Report_ptr report)
+void test_add(TestReport_ptr report)
 {
   Test_Func tests[] = {
     should_add_two_pos_nums, 
@@ -94,7 +94,7 @@ Test_ptr should_sub_pos_and_neg_num()
   return test;
 }
 
-void test_sub(Report_ptr report)
+void test_sub(TestReport_ptr report)
 {
   Test_Func tests[] = {
     should_sub_two_pos_nums, 
@@ -109,7 +109,7 @@ int main(void)
 {
   TestSuite_Func test_suites[] = {test_add, test_sub};
 
-  Report_ptr report = runt_test_suites(test_suites, 2);
+  TestReport_ptr report = runt_test_suites(test_suites, 2);
   display_report(report);
 
   return 0;
