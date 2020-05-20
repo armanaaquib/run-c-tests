@@ -15,17 +15,17 @@ int sub(int num1, int num2)
 }
 
 void test_add(TestReport_ptr);
-Test_ptr should_add_two_pos_nums(void);
-Test_ptr should_add_two_neg_nums(void);
-Test_ptr should_add_pos_and_neg_num(void);
+Test_ptr should_add_two_pos_nums(Test_ptr);
+Test_ptr should_add_two_neg_nums(Test_ptr);
+Test_ptr should_add_pos_and_neg_num(Test_ptr);
 void test_sub(TestReport_ptr);
-Test_ptr should_sub_two_pos_nums(void);
-Test_ptr should_sub_two_neg_nums(void);
-Test_ptr should_sub_pos_and_neg_num(void);
+Test_ptr should_sub_two_pos_nums(Test_ptr);
+Test_ptr should_sub_two_neg_nums(Test_ptr);
+Test_ptr should_sub_pos_and_neg_num(Test_ptr);
 
-Test_ptr should_add_two_pos_nums()
+Test_ptr should_add_two_pos_nums(Test_ptr test)
 {
-  Test_ptr test = create_test("should add two positive numbers");
+  test->name = "should add two positive numbers";
 
   assert_int_equal(add(1,2), 3, test);
   assert_int_equal(add(0,2), 2, test);
@@ -33,9 +33,9 @@ Test_ptr should_add_two_pos_nums()
   return test;
 }
 
-Test_ptr should_add_two_neg_nums()
+Test_ptr should_add_two_neg_nums(Test_ptr test)
 {
-  Test_ptr test = create_test("should add two negative numbers");
+  test->name = "should add two negative numbers";
 
   assert_int_equal(add(-1,-2), -3, test);
   assert_int_equal(add(-0,-2), -2, test);
@@ -43,9 +43,9 @@ Test_ptr should_add_two_neg_nums()
   return test;
 }
 
-Test_ptr should_add_pos_and_neg_num()
+Test_ptr should_add_pos_and_neg_num(Test_ptr test)
 {
-  Test_ptr test = create_test("should add positive and negative number");
+  test->name = "should add positive and negative number";
 
   assert_int_equal(add(-1,2), 1, test);
   assert_int_equal(add(-2,0), -2, test);
@@ -64,9 +64,9 @@ void test_add(TestReport_ptr report)
   run_tests("add()", tests, 3, report);
 }
 
-Test_ptr should_sub_two_pos_nums()
+Test_ptr should_sub_two_pos_nums(Test_ptr test)
 {
-  Test_ptr test = create_test("should sub two positive numbers");
+  test->name = "should sub two positive numbers";
 
   assert_int_equal(sub(2,1), 1, test);
   assert_int_equal(sub(2,0), 2, test);
@@ -74,9 +74,9 @@ Test_ptr should_sub_two_pos_nums()
   return test;
 }
 
-Test_ptr should_sub_two_neg_nums()
+Test_ptr should_sub_two_neg_nums(Test_ptr test)
 {
-  Test_ptr test = create_test("should sub two negative numbers");
+  test->name = "should sub two negative numbers";
 
   assert_int_equal(sub(-1,-2), 1, test);
   assert_int_equal(sub(-3,-2), -1, test);
@@ -84,9 +84,9 @@ Test_ptr should_sub_two_neg_nums()
   return test;
 }
 
-Test_ptr should_sub_pos_and_neg_num()
+Test_ptr should_sub_pos_and_neg_num(Test_ptr test)
 {
-  Test_ptr test = create_test("should sub positive and negative number");
+  test->name = "should sub positive and negative number";
 
   assert_int_equal(sub(-1,2), -3, test);
   assert_int_equal(sub(-2,0), -2, test);
